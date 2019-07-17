@@ -1,10 +1,10 @@
-# react-native-image-cropper-thanhtq
-
+# react-native-cropper fork from react-native-image-cropper-thanhtq
+# RedHotPie
 ## Result
-<p align="left">
+<!-- <p align="left">
 <img title="iOS Crop" src="https://github.com/thanhit93/react-native-image-cropper-thanhtq/tree/master/images/image-ios-crop.jpg" width=200 />
 <img title="Android crop" src="https://github.com/thanhit93/react-native-image-cropper-thanhtq/tree/master/images/image-android-crop.PNG" width=200 />
-</p>
+</p> -->
 
 ## iOS Installation
  do it manually as described below:
