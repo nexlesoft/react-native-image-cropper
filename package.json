@@ -1,0 +1,25 @@
+{
+  "name": "react-native-image-cropper-thanhtq",
+  "version": "0.0.6",
+  "author": "Thanh Truong",
+  "private": false,
+  "license": "Apache-2.0",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "react-native",
+    "android",
+    "ios",
+    "library",
+    "image",
+    "crop",
+    "avatar",
+    "rectangle",
+    "cropper image"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thanhit93/react-native-image-cropper-thanhtq.git"
+  }
+}
