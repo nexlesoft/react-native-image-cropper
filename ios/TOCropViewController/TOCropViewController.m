@@ -91,7 +91,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
         _transitionController = [[TOCropViewControllerTransitioning alloc] init];
 
         // Default initial behaviour
-        _aspectRatioPreset = TOCropViewControllerAspectRatioPresetOriginal;
+        _aspectRatioPreset = TOCropViewControllerAspectRatioPreset9x16;
         _toolbarPosition = TOCropViewControllerToolbarPositionBottom;
     }
 	
@@ -153,13 +153,15 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
         }
 
         self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+
     }
     else {
         // Hide the background content when transitioning for performance
-        [self.cropView setBackgroundImageViewHidden:YES animated:NO];
+        //           [self.cropView setBackgroundImageViewHidden:YES animated:NO];
+        //          self.titleLabel.alpha = 1.0f;
         
         // The title label will fade
-        self.titleLabel.alpha = 1.0f;//animated ? 1.0f : 1.0f;
+      //animated ? 1.0f : 1.0f;
     }
 
     // If an initial aspect ratio was set before presentation, set it now once the rest of
@@ -185,7 +187,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
 //        [self setNeedsStatusBarAppearanceUpdate];
 //        self.titleLabel.alpha = 1.0f;
 //    };
-
+//
 //    if (animated) {
 //        [UIView animateWithDuration:0.3f animations:updateContentBlock];
 //    }
@@ -577,8 +579,8 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
     //Prepare the list that will be fed to the alert view/controller
     
     // Ratio titles according to the order of enum TOCropViewControllerAspectRatioPreset
-    NSArray<NSString *> *portraitRatioTitles = @[originalButtonTitle, squareButtonTitle, @"2:3", @"3:5", @"3:4", @"4:5", @"5:7", @"9:16"];
-    NSArray<NSString *> *landscapeRatioTitles = @[originalButtonTitle, squareButtonTitle, @"3:2", @"5:3", @"4:3", @"5:4", @"7:5", @"16:9"];
+    NSArray<NSString *> *portraitRatioTitles = @[originalButtonTitle, squareButtonTitle, @"2:3", @"3:5", @"3:4", @"4:5", @"5:7", @"9:16", @"12.5:9"];
+    NSArray<NSString *> *landscapeRatioTitles = @[originalButtonTitle, squareButtonTitle, @"3:2", @"5:3", @"4:3", @"5:4", @"7:5", @"16:9", @"9:12.5"];
 
     NSMutableArray *ratioValues = [NSMutableArray array];
     NSMutableArray *itemStrings = [NSMutableArray array];
@@ -1022,12 +1024,12 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
 {
     [super setTitle:title];
 
-    if (self.title.length == 0) {
-        [_titleLabel removeFromSuperview];
-        _cropView.cropRegionInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-        _titleLabel = nil;
-        return;
-    }
+//    if (self.title.length == 0) {
+//        [_titleLabel removeFromSuperview];
+//        _cropView.cropRegionInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+//        _titleLabel = nil;
+//        return;
+//    }
 
     self.titleLabel.text = self.title;
     [self.titleLabel sizeToFit];
@@ -1077,7 +1079,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
     _titleLabel.textAlignment = NSTextAlignmentCenter;
     _titleLabel.text = self.title;
 
-    [self.view insertSubview:self.titleLabel aboveSubview:self.cropView];
+    [self.view addSubview: self.titleLabel];
 
     return _titleLabel;
 }

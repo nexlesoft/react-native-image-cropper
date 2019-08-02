@@ -7,37 +7,37 @@
 		<key>CropViewController.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>46</integer>
+			<integer>2</integer>
 		</dict>
 		<key>CropViewControllerExample.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>47</integer>
+			<integer>3</integer>
 		</dict>
 		<key>ImageCropperManager.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>55</integer>
+			<integer>57</integer>
 		</dict>
 		<key>TOCropViewController.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>48</integer>
+			<integer>4</integer>
 		</dict>
 		<key>TOCropViewControllerExample-Extension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>50</integer>
+			<integer>6</integer>
 		</dict>
 		<key>TOCropViewControllerExample.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>49</integer>
+			<integer>5</integer>
 		</dict>
 		<key>TOCropViewControllerTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>51</integer>
+			<integer>7</integer>
 		</dict>
 	</dict>
 </dict>
