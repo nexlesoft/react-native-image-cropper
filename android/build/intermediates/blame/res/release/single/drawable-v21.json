@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/apple/Documents/GitHub/redhotpie-messenger-mobile/node_modules/react-native-image-cropper-thanhtq/android/build/intermediates/res/merged/release/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/apple/.gradle/caches/transforms-2/files-2.1/d15664015468b39b41d7ab5e7929842c/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/apple/Documents/GitHub/redhotpie-messenger-mobile/node_modules/react-native-image-cropper-thanhtq/android/build/intermediates/res/merged/release/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/apple/.gradle/caches/transforms-2/files-2.1/d15664015468b39b41d7ab5e7929842c/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/Users/apple/Documents/GitHub/redhotpie-messenger-mobile/node_modules/react-native-image-cropper-thanhtq/android/build/intermediates/res/merged/release/drawable-v21/notification_action_background.xml",
+        "source": "/Users/apple/.gradle/caches/transforms-2/files-2.1/9603a94dfbf9571e6898466a505b35b3/res/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "/Users/apple/Documents/GitHub/redhotpie-messenger-mobile/node_modules/react-native-image-cropper-thanhtq/android/build/intermediates/res/merged/release/drawable-v21/abc_dialog_material_background.xml",
+        "source": "/Users/apple/.gradle/caches/transforms-2/files-2.1/d15664015468b39b41d7ab5e7929842c/res/drawable-v21/abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "/Users/apple/Documents/GitHub/redhotpie-messenger-mobile/node_modules/react-native-image-cropper-thanhtq/android/build/intermediates/res/merged/release/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/apple/.gradle/caches/transforms-2/files-2.1/d15664015468b39b41d7ab5e7929842c/res/drawable-v21/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/Users/apple/Documents/GitHub/redhotpie-messenger-mobile/node_modules/react-native-image-cropper-thanhtq/android/build/intermediates/res/merged/release/drawable-v21/abc_list_divider_material.xml",
+        "source": "/Users/apple/.gradle/caches/transforms-2/files-2.1/d15664015468b39b41d7ab5e7929842c/res/drawable-v21/abc_list_divider_material.xml"
+    }
+]

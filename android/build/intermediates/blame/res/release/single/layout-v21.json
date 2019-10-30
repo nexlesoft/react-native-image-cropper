@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/apple/Documents/GitHub/redhotpie-messenger-mobile/node_modules/react-native-image-cropper-thanhtq/android/build/intermediates/res/merged/release/layout-v21/notification_action.xml",
+        "source": "/Users/apple/.gradle/caches/transforms-2/files-2.1/9603a94dfbf9571e6898466a505b35b3/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/apple/Documents/GitHub/redhotpie-messenger-mobile/node_modules/react-native-image-cropper-thanhtq/android/build/intermediates/res/merged/release/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/apple/.gradle/caches/transforms-2/files-2.1/9603a94dfbf9571e6898466a505b35b3/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/apple/Documents/GitHub/redhotpie-messenger-mobile/node_modules/react-native-image-cropper-thanhtq/android/build/intermediates/res/merged/release/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/apple/.gradle/caches/transforms-2/files-2.1/9603a94dfbf9571e6898466a505b35b3/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/apple/Documents/GitHub/redhotpie-messenger-mobile/node_modules/react-native-image-cropper-thanhtq/android/build/intermediates/res/merged/release/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/apple/.gradle/caches/transforms-2/files-2.1/9603a94dfbf9571e6898466a505b35b3/res/layout-v21/notification_action_tombstone.xml"
+    }
+]

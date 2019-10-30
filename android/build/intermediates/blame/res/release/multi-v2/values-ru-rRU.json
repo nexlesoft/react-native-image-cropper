@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/apple/Documents/GitHub/redhotpie-messenger-mobile/node_modules/react-native-image-cropper-thanhtq/android/build/intermediates/res/merged/release/values-ru-rRU/values-ru-rRU.xml",
+            "map": [
+                {
+                    "source": "/Users/apple/.gradle/caches/transforms-2/files-2.1/00987c4bb67fc763c77251bb48861f2f/res/values-ru-rRU/values-ru-rRU.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,113,171,257,339,412,487",
+                        "endColumns": "57,57,85,81,72,74,76",
+                        "endOffsets": "108,166,252,334,407,482,559"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/apple/Documents/GitHub/redhotpie-messenger-mobile/node_modules/react-native-image-cropper-thanhtq/android/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-ru-rRU/values-ru-rRU.xml",
+            "map": [
+                {
+                    "source": "/Users/apple/.gradle/caches/transforms-2/files-2.1/00987c4bb67fc763c77251bb48861f2f/res/values-ru-rRU/values-ru-rRU.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,113,171,257,339,412,487",
+                        "endColumns": "57,57,85,81,72,74,76",
+                        "endOffsets": "108,166,252,334,407,482,559"
+                    }
+                }
+            ]
+        }
+    ]
+}

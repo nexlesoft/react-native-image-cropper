@@ -1067,19 +1067,25 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
 - (UILabel *)titleLabel
 {
     if (!self.title.length) { return nil; }
-    if (_titleLabel) { return _titleLabel; }
+    if (_titleLabel) {
+        [self.view bringSubviewToFront: _titleLabel];
+        return _titleLabel;
+    }
 
-    _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-    _titleLabel.backgroundColor = [UIColor clearColor];
-    _titleLabel.textColor = [UIColor whiteColor];
-    _titleLabel.numberOfLines = 1;
-    _titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
-    _titleLabel.clipsToBounds = YES;
-    _titleLabel.textAlignment = NSTextAlignmentCenter;
-    _titleLabel.text = self.title;
-
-    [self.view addSubview: self.titleLabel];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+        self.titleLabel.backgroundColor = [UIColor clearColor];
+        self.titleLabel.textColor = [UIColor whiteColor];
+        self.titleLabel.numberOfLines = 1;
+        self.titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
+        self.titleLabel.clipsToBounds = YES;
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        self.titleLabel.text = self.title;
+        
+        [self.view addSubview: self.titleLabel];
+    });
+    
 
     return _titleLabel;
 }
