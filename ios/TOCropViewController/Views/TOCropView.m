@@ -1561,7 +1561,7 @@ typedef NS_ENUM(NSInteger, TOCropViewOverlayEdge) {
     //Work out how much we'll need to scale everything to fit to the new rotation
     CGRect contentBounds = self.contentBounds;
     CGRect cropBoxFrame = self.cropBoxFrame;
-    CGFloat scale = 1.0f;// MIN(contentBounds.size.width / cropBoxFrame.size.height, contentBounds.size.height / cropBoxFrame.size.width);
+    CGFloat scale = MIN(contentBounds.size.width / cropBoxFrame.size.height, contentBounds.size.height / cropBoxFrame.size.width);
     
     //Work out which section of the image we're currently focusing at
     CGPoint cropMidPoint = (CGPoint){CGRectGetMidX(cropBoxFrame), CGRectGetMidY(cropBoxFrame)};
@@ -1583,8 +1583,8 @@ typedef NS_ENUM(NSInteger, TOCropViewOverlayEdge) {
         self.scrollView.zoomScale *= scale;
     }
     
-    newCropFrame.origin.x = floorf(CGRectGetMidX(contentBounds) - 0);
-    newCropFrame.origin.y = floorf(CGRectGetMidY(contentBounds) - 0);
+    newCropFrame.origin.x = floorf(CGRectGetMidX(contentBounds) - (newCropFrame.size.width * 0.5f));
+    newCropFrame.origin.y = floorf(CGRectGetMidY(contentBounds) - (newCropFrame.size.height * 0.5f));
     
     //If we're animated, generate a snapshot view that we'll animate in place of the real view
     UIView *snapshotView = nil;
@@ -1598,7 +1598,7 @@ typedef NS_ENUM(NSInteger, TOCropViewOverlayEdge) {
     
     //Flip the width/height of the container view so it matches the rotated image view's size
     CGSize containerSize = self.backgroundContainerView.frame.size;
-    self.backgroundContainerView.frame = (CGRect){CGPointZero, {containerSize.height, containerSize.width + 40}};
+    self.backgroundContainerView.frame = (CGRect){CGPointZero, {containerSize.height, containerSize.width}};
     self.backgroundImageView.frame = (CGRect){CGPointZero, self.backgroundImageView.frame.size};
 
     //Rotate the foreground image view to match

@@ -77,57 +77,64 @@
     [_doneTextButton.titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
     [_doneTextButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [_doneTextButton sizeToFit];
+
     _doneTextButton.layer.borderColor = [[UIColor grayColor] CGColor];
-    _doneTextButton.layer.borderWidth = 1.0f;
-    _doneTextButton.clipsToBounds = true;
-    _doneTextButton.layer.cornerRadius = 35.f/2.f;
+      _doneTextButton.layer.borderWidth = 1.0f;
+      _doneTextButton.clipsToBounds = true;
+      _doneTextButton.layer.cornerRadius = 35.f/2.f;
+      _doneTextButton.backgroundColor = [UIColor colorWithRed:123.f/255.f green:203.f/255.f blue:69.f/255.f alpha:1.0f];
     [self addSubview:_doneTextButton];
     
     _doneIconButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [_doneIconButton setImage:[TOCropToolbar doneImage] forState:UIControlStateNormal];
     [_doneIconButton setTintColor:[UIColor colorWithRed:1.0f green:0.8f blue:0.0f alpha:1.0f]];
     [_doneIconButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+  
     [self addSubview:_doneIconButton];
     
     _cancelTextButton = [UIButton buttonWithType:UIButtonTypeSystem];
     
-    [_cancelTextButton setTitle: @"Cancel" forState:UIControlStateNormal];
+    [_cancelTextButton setTitle: _cancelTextButtonTitle ?
+    _cancelTextButtonTitle : NSLocalizedStringFromTableInBundle(@"Cancel",
+                                                                    @"TOCropViewControllerLocalizable",
+                                                                    resourceBundle,
+                                                                    nil)
+                       forState:UIControlStateNormal];
     [_cancelTextButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [_cancelTextButton.titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
-    _cancelTextButton.backgroundColor = [UIColor whiteColor];
-    _cancelTextButton.layer.borderColor = [[UIColor grayColor] CGColor];
-    _cancelTextButton.layer.borderWidth = 1.0f;
-    _cancelTextButton.clipsToBounds = true;
-    _cancelTextButton.layer.cornerRadius = 35.f/2.f;
+
+    [_cancelTextButton.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
     [_cancelTextButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [_cancelTextButton sizeToFit];
+    _cancelTextButton.layer.borderColor = [[UIColor grayColor] CGColor];
+       _cancelTextButton.layer.borderWidth = 1.0f;
+       _cancelTextButton.clipsToBounds = true;
+       _cancelTextButton.layer.cornerRadius = 35.f/2.f;
+       _cancelTextButton.backgroundColor = [UIColor whiteColor];
     [self addSubview:_cancelTextButton];
     
     _cancelIconButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [_cancelIconButton setImage:[TOCropToolbar cancelImage] forState:UIControlStateNormal];
     [_cancelIconButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+   
     [self addSubview:_cancelIconButton];
     
-    _clampButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _clampButton.contentMode = UIViewContentModeScaleAspectFit;
+    _clampButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    _clampButton.contentMode = UIViewContentModeCenter;
     _clampButton.tintColor = [UIColor whiteColor];
-    //[_clampButton setImage:[TOCropToolbar clampImage] forState:UIControlStateNormal];
-    
+    [_clampButton setImage:[TOCropToolbar clampImage] forState:UIControlStateNormal];
     [_clampButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_clampButton];
     
-    _rotateCounterclockwiseButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _rotateCounterclockwiseButton.contentMode = UIViewContentModeScaleAspectFit;
+     _rotateCounterclockwiseButton = [UIButton buttonWithType:UIButtonTypeCustom];
+      _rotateCounterclockwiseButton.contentMode = UIViewContentModeScaleAspectFit;
     _rotateCounterclockwiseButton.tintColor = [UIColor whiteColor];
     [_rotateCounterclockwiseButton setImage:[UIImage imageNamed:@"left_rotate.png"] forState:UIControlStateNormal];
-    [_rotateCounterclockwiseButton setImage:[TOCropToolbar rotateCCWImage] forState:UIControlStateNormal];
     [_rotateCounterclockwiseButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_rotateCounterclockwiseButton];
     
     _rotateClockwiseButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _rotateClockwiseButton.contentMode = UIViewContentModeScaleAspectFit;
-//    _rotateClockwiseButton.tintColor = [UIColor whiteColor];
-    //[_rotateClockwiseButton setImage:[TOCropToolbar rotateCWImage] forState:UIControlStateNormal];
+    _rotateClockwiseButton.tintColor = [UIColor whiteColor];
     [_rotateClockwiseButton setImage:[UIImage imageNamed:@"right_rotate.png"] forState:UIControlStateNormal];
     [_rotateClockwiseButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_rotateClockwiseButton];
@@ -148,10 +155,10 @@
     BOOL verticalLayout = (CGRectGetWidth(self.bounds) < CGRectGetHeight(self.bounds));
     CGSize boundsSize = self.bounds.size;
     
-    self.cancelIconButton.hidden = (!verticalLayout);
-    self.cancelTextButton.hidden = (verticalLayout);
-    self.doneIconButton.hidden   = (!verticalLayout);
-    self.doneTextButton.hidden   = (verticalLayout);
+    self.cancelIconButton.hidden = self.cancelButtonHidden || (!verticalLayout);
+    self.cancelTextButton.hidden = self.cancelButtonHidden || (verticalLayout);
+    self.doneIconButton.hidden   = self.doneButtonHidden || (!verticalLayout);
+    self.doneTextButton.hidden   = self.doneButtonHidden || (verticalLayout);
 
     CGRect frame = self.bounds;
     frame.origin.x -= self.backgroundViewOutsets.left;
@@ -174,11 +181,13 @@
     
     if (verticalLayout == NO) {
         CGFloat insetPadding = 10.0f;
+        
         // Work out the cancel button frame
         CGRect frame = CGRectZero;
         frame.size.height = 35.0f;
-        frame.size.width = 90.0f;
-        //frame.size.width = MIN(self.frame.size.width / 3.0, self.cancelTextButton.frame.size.width + 10);
+        frame.size.width = 60.0f;
+        frame.origin.y= 10.0f;
+        //frame.size.width = MIN(self.frame.size.width / 3.0, self.cancelTextButton.frame.size.width);
 
         //If normal layout, place on the left side, else place on the right
         if (self.reverseContentLayout == NO) {
@@ -190,8 +199,9 @@
         self.cancelTextButton.frame = frame;
         
         // Work out the Done button frame
-//        frame.size.width = MIN(self.frame.size.width / 3.0, self.doneTextButton.frame.size.width + 10);
-        frame.size.width = 90.f;
+       // frame.size.width = MIN(self.frame.size.width / 3.0, self.doneTextButton.frame.size.width);
+        frame.size.width = 60.0f;
+
         if (self.reverseContentLayout == NO) {
             frame.origin.x = boundsSize.width - (frame.size.width + insetPadding);
         }
@@ -211,13 +221,13 @@
             width = CGRectGetMinX(self.cancelTextButton.frame) - CGRectGetMaxX(self.doneTextButton.frame);
         }
         
-        CGRect containerRect = CGRectIntegral((CGRect){x,frame.origin.y,width,35.0f});
+        CGRect containerRect = CGRectIntegral((CGRect){x,frame.origin.y,width,44.0f});
 
 #if TOCROPTOOLBAR_DEBUG_SHOWING_BUTTONS_CONTAINER_RECT
         containerView.frame = containerRect;
 #endif
         
-        CGSize buttonSize = (CGSize){80.0f,35.0f};
+        CGSize buttonSize = (CGSize){60.0f,35.0f};
         
         NSMutableArray *buttonsInOrderHorizontally = [NSMutableArray new];
         if (!self.rotateCounterclockwiseButtonHidden) {
@@ -239,23 +249,23 @@
     }
     else {
         CGRect frame = CGRectZero;
-        frame.size.height = 44.0f;
-        frame.size.width = 44.0f;
-        frame.origin.y = CGRectGetHeight(self.bounds) - 44.0f;
+        frame.size.height = 35.0f;
+        frame.size.width = 60.0f;
+        frame.origin.y =20.0f;
         self.cancelIconButton.frame = frame;
         
-        frame.origin.y = self.statusBarHeightInset;
-        frame.size.width = 44.0f;
-        frame.size.height = 44.0f;
+        frame.origin.y = 20.0f;
+        frame.size.width = 60.0f;
+        frame.size.height = 35.0f;
         self.doneIconButton.frame = frame;
         
-        CGRect containerRect = (CGRect){0,CGRectGetMaxY(self.doneIconButton.frame),44.0f,CGRectGetMinY(self.cancelIconButton.frame)-CGRectGetMaxY(self.doneIconButton.frame)};
+        CGRect containerRect = (CGRect){0,CGRectGetMaxY(self.doneIconButton.frame),35.0f,CGRectGetMinY(self.cancelIconButton.frame)-CGRectGetMaxY(self.doneIconButton.frame)};
         
 #if TOCROPTOOLBAR_DEBUG_SHOWING_BUTTONS_CONTAINER_RECT
         containerView.frame = containerRect;
 #endif
         
-        CGSize buttonSize = (CGSize){44.0f,44.0f};
+        CGSize buttonSize = (CGSize){60.0f,35.0f};
         
         NSMutableArray *buttonsInOrderVertically = [NSMutableArray new];
         if (!self.rotateCounterclockwiseButtonHidden) {
@@ -372,6 +382,22 @@
     self.resetButton.enabled = resetButtonEnabled;
 }
 
+- (void)setDoneButtonHidden:(BOOL)doneButtonHidden {
+    if (_doneButtonHidden == doneButtonHidden)
+        return;
+    
+    _doneButtonHidden = doneButtonHidden;
+    [self setNeedsLayout];
+}
+
+- (void)setCancelButtonHidden:(BOOL)cancelButtonHidden {
+    if (_cancelButtonHidden == cancelButtonHidden)
+        return;
+    
+    _cancelButtonHidden = cancelButtonHidden;
+    [self setNeedsLayout];
+}
+
 - (CGRect)doneButtonFrame
 {
     if (self.doneIconButton.hidden == NO)
@@ -447,54 +473,52 @@
 
 + (UIImage *)rotateCCWImage
 {
-    return [UIImage imageNamed:@"left_rotate"];
-//    UIImage *rotateImage = nil;
-//
-//    UIGraphicsBeginImageContextWithOptions((CGSize){18,21}, NO, 0.0f);
-//    {
-//        //// Rectangle 2 Drawing
-//        UIBezierPath* rectangle2Path = [UIBezierPath bezierPathWithRect: CGRectMake(0, 9, 12, 12)];
-//        [UIColor.whiteColor setFill];
-//        [rectangle2Path fill];
-//
-//
-//        //// Rectangle 3 Drawing
-//        UIBezierPath* rectangle3Path = UIBezierPath.bezierPath;
-//        [rectangle3Path moveToPoint: CGPointMake(5, 3)];
-//        [rectangle3Path addLineToPoint: CGPointMake(10, 6)];
-//        [rectangle3Path addLineToPoint: CGPointMake(10, 0)];
-//        [rectangle3Path addLineToPoint: CGPointMake(5, 3)];
-//        [rectangle3Path closePath];
-//        [UIColor.whiteColor setFill];
-//        [rectangle3Path fill];
-//
-//
-//        //// Bezier Drawing
-//        UIBezierPath* bezierPath = UIBezierPath.bezierPath;
-//        [bezierPath moveToPoint: CGPointMake(10, 3)];
-//        [bezierPath addCurveToPoint: CGPointMake(17.5, 11) controlPoint1: CGPointMake(15, 3) controlPoint2: CGPointMake(17.5, 5.91)];
-//        [UIColor.whiteColor setStroke];
-//        bezierPath.lineWidth = 1;
-//        [bezierPath stroke];
-//        rotateImage = UIGraphicsGetImageFromCurrentImageContext();
-//    }
-//    UIGraphicsEndImageContext();
-//
-//    return rotateImage;
+    UIImage *rotateImage = nil;
+    
+    UIGraphicsBeginImageContextWithOptions((CGSize){18,21}, NO, 0.0f);
+    {
+        //// Rectangle 2 Drawing
+        UIBezierPath* rectangle2Path = [UIBezierPath bezierPathWithRect: CGRectMake(0, 9, 12, 12)];
+        [UIColor.whiteColor setFill];
+        [rectangle2Path fill];
+        
+        
+        //// Rectangle 3 Drawing
+        UIBezierPath* rectangle3Path = UIBezierPath.bezierPath;
+        [rectangle3Path moveToPoint: CGPointMake(5, 3)];
+        [rectangle3Path addLineToPoint: CGPointMake(10, 6)];
+        [rectangle3Path addLineToPoint: CGPointMake(10, 0)];
+        [rectangle3Path addLineToPoint: CGPointMake(5, 3)];
+        [rectangle3Path closePath];
+        [UIColor.whiteColor setFill];
+        [rectangle3Path fill];
+        
+        
+        //// Bezier Drawing
+        UIBezierPath* bezierPath = UIBezierPath.bezierPath;
+        [bezierPath moveToPoint: CGPointMake(10, 3)];
+        [bezierPath addCurveToPoint: CGPointMake(17.5, 11) controlPoint1: CGPointMake(15, 3) controlPoint2: CGPointMake(17.5, 5.91)];
+        [UIColor.whiteColor setStroke];
+        bezierPath.lineWidth = 1;
+        [bezierPath stroke];
+        rotateImage = UIGraphicsGetImageFromCurrentImageContext();
+    }
+    UIGraphicsEndImageContext();
+    
+    return rotateImage;
 }
 
 + (UIImage *)rotateCWImage
 {
-    return [UIImage imageNamed:@"right_rotate"];
-//    UIImage *rotateCCWImage = [self.class rotateCCWImage];
-//    UIGraphicsBeginImageContextWithOptions(rotateCCWImage.size, NO, rotateCCWImage.scale);
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGContextTranslateCTM(context, rotateCCWImage.size.width, rotateCCWImage.size.height);
-//    CGContextRotateCTM(context, M_PI);
-//    CGContextDrawImage(context,CGRectMake(0,0,rotateCCWImage.size.width,rotateCCWImage.size.height),rotateCCWImage.CGImage);
-//    UIImage *rotateCWImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return rotateCWImage;
+    UIImage *rotateCCWImage = [self.class rotateCCWImage];
+    UIGraphicsBeginImageContextWithOptions(rotateCCWImage.size, NO, rotateCCWImage.scale);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextTranslateCTM(context, rotateCCWImage.size.width, rotateCCWImage.size.height);
+    CGContextRotateCTM(context, M_PI);
+    CGContextDrawImage(context,CGRectMake(0,0,rotateCCWImage.size.width,rotateCCWImage.size.height),rotateCCWImage.CGImage);
+    UIImage *rotateCWImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return rotateCWImage;
 }
 
 + (UIImage *)resetImage
@@ -617,6 +641,15 @@
 {
     _statusBarHeightInset = statusBarHeightInset;
     [self setNeedsLayout];
+}
+
+- (UIView *)visibleCancelButton
+{
+    if (self.cancelIconButton.hidden == NO) {
+        return self.cancelIconButton;
+    }
+
+    return self.cancelTextButton;
 }
 
 @end
