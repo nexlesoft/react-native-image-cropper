@@ -71,10 +71,14 @@
     NSBundle *resourceBundle = TO_CROP_VIEW_RESOURCE_BUNDLE_FOR_OBJECT(self);
     
     _doneTextButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [_doneTextButton setTitle: @"Done" forState:UIControlStateNormal];
+    [_doneTextButton setTitle: _doneTextButtonTitle ?
+    _doneTextButtonTitle : NSLocalizedStringFromTableInBundle(@"Done",
+                                                                  @"TOCropViewControllerLocalizable",
+                                                                  resourceBundle,
+                                                                  nil)
+                     forState:UIControlStateNormal];
     [_doneTextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _doneTextButton.backgroundColor = [UIColor colorWithRed:123.f/255.f green:203.f/255.f blue:69.f/255.f alpha:1.0f];
-    [_doneTextButton.titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
+    [_doneTextButton.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
     [_doneTextButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [_doneTextButton sizeToFit];
 
@@ -251,10 +255,10 @@
         CGRect frame = CGRectZero;
         frame.size.height = 35.0f;
         frame.size.width = 60.0f;
-        frame.origin.y =20.0f;
+        frame.origin.y =10.0f;
         self.cancelIconButton.frame = frame;
         
-        frame.origin.y = 20.0f;
+        frame.origin.y = 10.0f;
         frame.size.width = 60.0f;
         frame.size.height = 35.0f;
         self.doneIconButton.frame = frame;

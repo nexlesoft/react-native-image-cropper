@@ -93,39 +93,40 @@ RCT_EXPORT_MODULE();
 }
 
 RCT_EXPORT_METHOD(showViewCrop:(NSString *)urlImage options:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback){
-    self.callback = callback; // Save the callback so we can use it from the delegate methods
-    self.options = options;
-    //NSString *urlBase64 = [self.options valueForKey:@"urlBase64Image"];
-    //UIImage *image = [self decodeBase64ToImage:urlBase64];
-    NSString *path = [self.options valueForKey:@"path"];
-    NSURL *localurl = [NSURL URLWithString:path];
-    NSData *data = [NSData dataWithContentsOfURL:localurl];
-    UIImage *image = [[UIImage alloc] initWithData:data];
-    self.croppingStyle = TOCropViewCroppingStyleDefault;
     
-    TOCropViewController *cropController = [[TOCropViewController alloc] initWithCroppingStyle:self.croppingStyle image:image];
-    cropController.title = @"MOVE AND SCALE";
-    cropController.allowedAspectRatios = @[@(TOCropViewControllerAspectRatioPreset9x16)];
-    cropController.aspectRatioPreset = TOCropViewControllerAspectRatioPreset9x16; //Set the initial aspect ratio as a square
-    // -- Uncomment this line of code to place the toolbar at the top of the view controller --
-    //cropController.toolbarPosition = TOCropViewControllerToolbarPositionTop;
-    BOOL aspectRatioPickerButtonHidden = [[self.options objectForKey:@"aspectRatioPickerButtonHidden"] boolValue] ? YES: NO;
-    cropController.aspectRatioPickerButtonHidden = aspectRatioPickerButtonHidden;
-    // The crop box is locked to the aspect ratio and can't be resized away from it
-    BOOL aspectRatioLockEnabled = [[self.options objectForKey:@"aspectRatioLockEnabled"] boolValue] ? YES: NO;
-    cropController.aspectRatioLockEnabled = YES;
-    cropController.resetButtonHidden = YES;
-    cropController.aspectRatioLockDimensionSwapEnabled = NO;
-    cropController.hidesNavigationBar = YES;
-   // cropController.angle = 0; // The initial angle in which the image will be rotated
-  
-    cropController.cropView.alwaysShowCroppingGrid = YES;
-    cropController.delegate = self;
-  
-    AppDelegate *share = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    UINavigationController *nav = (UINavigationController *) share.window.rootViewController;
-    UIViewController *current = [self currentViewController];
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.callback = callback; // Save the callback so we can use it from the delegate methods
+          self.options = options;
+          //NSString *urlBase64 = [self.options valueForKey:@"urlBase64Image"];
+          //UIImage *image = [self decodeBase64ToImage:urlBase64];
+          NSString *path = [self.options valueForKey:@"path"];
+          NSURL *localurl = [NSURL URLWithString:path];
+          NSData *data = [NSData dataWithContentsOfURL:localurl];
+          UIImage *image = [[UIImage alloc] initWithData:data];
+          self.croppingStyle = TOCropViewCroppingStyleDefault;
+          
+          TOCropViewController *cropController = [[TOCropViewController alloc] initWithCroppingStyle:self.croppingStyle image:image];
+          cropController.title = @"MOVE AND SCALE";
+          cropController.allowedAspectRatios = @[@(TOCropViewControllerAspectRatioPreset16x9)];
+          cropController.aspectRatioPreset = TOCropViewControllerAspectRatioPreset16x9; //Set the initial aspect ratio as a square
+          // -- Uncomment this line of code to place the toolbar at the top of the view controller --
+          //cropController.toolbarPosition = TOCropViewControllerToolbarPositionTop;
+          BOOL aspectRatioPickerButtonHidden = [[self.options objectForKey:@"aspectRatioPickerButtonHidden"] boolValue] ? YES: NO;
+          cropController.aspectRatioPickerButtonHidden = aspectRatioPickerButtonHidden;
+          // The crop box is locked to the aspect ratio and can't be resized away from it
+          BOOL aspectRatioLockEnabled = [[self.options objectForKey:@"aspectRatioLockEnabled"] boolValue] ? YES: NO;
+          cropController.aspectRatioLockEnabled = YES;
+          cropController.resetButtonHidden = YES;
+          cropController.aspectRatioLockDimensionSwapEnabled = NO;
+          cropController.hidesNavigationBar = YES;
+         // cropController.angle = 0; // The initial angle in which the image will be rotated
+        
+          cropController.cropView.alwaysShowCroppingGrid = YES;
+          cropController.delegate = self;
+        
+          AppDelegate *share = (AppDelegate *)[UIApplication sharedApplication].delegate;
+          UINavigationController *nav = (UINavigationController *) share.window.rootViewController;
+          UIViewController *current = [self currentViewController];
         [nav presentViewController:cropController animated:YES completion:nil];
         //[self presentViewController:cropController animated:YES completion:nil];
     });
