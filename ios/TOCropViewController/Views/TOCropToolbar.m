@@ -110,10 +110,10 @@
     [_cancelTextButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [_cancelTextButton sizeToFit];
     _cancelTextButton.layer.borderColor = [[UIColor grayColor] CGColor];
-       _cancelTextButton.layer.borderWidth = 1.0f;
-       _cancelTextButton.clipsToBounds = true;
-       _cancelTextButton.layer.cornerRadius = 35.f/2.f;
-       _cancelTextButton.backgroundColor = [UIColor whiteColor];
+    _cancelTextButton.layer.borderWidth = 1.0f;
+    _cancelTextButton.clipsToBounds = true;
+    _cancelTextButton.layer.cornerRadius = 35.f/2.f;
+    _cancelTextButton.backgroundColor = [UIColor whiteColor];
     [self addSubview:_cancelTextButton];
     
     _cancelIconButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -130,9 +130,9 @@
     [self addSubview:_clampButton];
     
      _rotateCounterclockwiseButton = [UIButton buttonWithType:UIButtonTypeCustom];
-      _rotateCounterclockwiseButton.contentMode = UIViewContentModeScaleAspectFit;
+    _rotateCounterclockwiseButton.contentMode = UIViewContentModeScaleAspectFit;
     _rotateCounterclockwiseButton.tintColor = [UIColor whiteColor];
-    [_rotateCounterclockwiseButton setImage:[UIImage imageNamed:@"left_rotate.png"] forState:UIControlStateNormal];
+    [_rotateCounterclockwiseButton setBackgroundImage:[UIImage imageNamed:@"left_rotate.png"] forState:UIControlStateNormal];
     [_rotateCounterclockwiseButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_rotateCounterclockwiseButton];
     
@@ -141,6 +141,9 @@
     _rotateClockwiseButton.tintColor = [UIColor whiteColor];
     [_rotateClockwiseButton setImage:[UIImage imageNamed:@"right_rotate.png"] forState:UIControlStateNormal];
     [_rotateClockwiseButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [_rotateClockwiseButton setFrame:CGRectMake(0, 0, 130, 44)];
+   // [_rotateClockwiseButton setImageEdgeInsets:(UIEdgeInsetsMake(25,25,25,25))];
+
     [self addSubview:_rotateClockwiseButton];
     
     _resetButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -189,7 +192,7 @@
         // Work out the cancel button frame
         CGRect frame = CGRectZero;
         frame.size.height = 35.0f;
-        frame.size.width = 60.0f;
+        frame.size.width = 80.0f;
         frame.origin.y= 10.0f;
         //frame.size.width = MIN(self.frame.size.width / 3.0, self.cancelTextButton.frame.size.width);
 
@@ -204,7 +207,7 @@
         
         // Work out the Done button frame
        // frame.size.width = MIN(self.frame.size.width / 3.0, self.doneTextButton.frame.size.width);
-        frame.size.width = 60.0f;
+        frame.size.width = 80.0f;
 
         if (self.reverseContentLayout == NO) {
             frame.origin.x = boundsSize.width - (frame.size.width + insetPadding);
@@ -231,7 +234,7 @@
         containerView.frame = containerRect;
 #endif
         
-        CGSize buttonSize = (CGSize){60.0f,35.0f};
+        CGSize buttonSize = (CGSize){80.0f,35.0f};
         
         NSMutableArray *buttonsInOrderHorizontally = [NSMutableArray new];
         if (!self.rotateCounterclockwiseButtonHidden) {
@@ -254,12 +257,12 @@
     else {
         CGRect frame = CGRectZero;
         frame.size.height = 35.0f;
-        frame.size.width = 60.0f;
-        frame.origin.y =10.0f;
+        frame.size.width = 80.0f;
+        frame.origin.y =20.0f;
         self.cancelIconButton.frame = frame;
         
-        frame.origin.y = 10.0f;
-        frame.size.width = 60.0f;
+        frame.origin.y = 20.0f;
+        frame.size.width = 80.0f;
         frame.size.height = 35.0f;
         self.doneIconButton.frame = frame;
         
