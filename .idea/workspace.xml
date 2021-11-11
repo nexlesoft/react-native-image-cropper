@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="166fc005-0a85-4778-82c9-f79d3afea68c" name="Default Changelist" comment="" />
+    <list default="true" id="166fc005-0a85-4778-82c9-f79d3afea68c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/index.android.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.ios.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +72,7 @@
       <workItem from="1550308531435" duration="2238000" />
       <workItem from="1550396308313" duration="2666000" />
       <workItem from="1550407685538" duration="4070000" />
-      <workItem from="1636615474785" duration="291000" />
+      <workItem from="1636615474785" duration="324000" />
     </task>
     <servers />
   </component>
