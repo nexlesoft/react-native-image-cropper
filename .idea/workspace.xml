@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="166fc005-0a85-4778-82c9-f79d3afea68c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-native-image-cropper-thanhtq.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/react-native-image-cropper-thanhtq.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,11 +18,6 @@
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="833" />
   </component>
   <component name="ProjectId" id="20lNylAhT91pRLf2fkyzLkp6lAf" />
   <component name="ProjectViewState">
@@ -73,6 +68,8 @@
       <workItem from="1550396308313" duration="2666000" />
       <workItem from="1550407685538" duration="4070000" />
       <workItem from="1636615474785" duration="1233000" />
+      <workItem from="1636685824274" duration="381000" />
+      <workItem from="1636686976944" duration="1020000" />
     </task>
     <servers />
   </component>
