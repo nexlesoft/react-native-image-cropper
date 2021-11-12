@@ -12,6 +12,13 @@ Pod::Spec.new do |s|
   s.source_files = 'ios/src/*.{h,m}'
   s.platform     = :ios, "8.0"
   s.dependency 'React'
-  s.dependency 'TOCropViewController'
+  s.subspec 'TOCropViewController' do |qb|
+      qb.name             = "TOCropViewController"
+      qb.source_files     = "ios/TOCropViewController/TOCropViewController/*.{h,m}"
+      qb.exclude_files    = "ios/TOCropViewController/TOCropViewController/TOCropViewController.h"
+      qb.resource_bundles = { "TOCropViewController" => "ios/TOCropViewController/Resources/*.{lproj,storyboard}" }
+      qb.requires_arc     = true
+      qb.frameworks       = "Photos"
+    end
 
 end
