@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="166fc005-0a85-4778-82c9-f79d3afea68c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/index.android.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.ios.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-native-image-cropper-thanhtq.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/react-native-image-cropper-thanhtq.podspec" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +72,7 @@
       <workItem from="1550308531435" duration="2238000" />
       <workItem from="1550396308313" duration="2666000" />
       <workItem from="1550407685538" duration="4070000" />
-      <workItem from="1636615474785" duration="324000" />
+      <workItem from="1636615474785" duration="1233000" />
     </task>
     <servers />
   </component>
