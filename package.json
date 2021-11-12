@@ -7,6 +7,7 @@
   "scripts": {},
   "dependencies": {},
   "devDependencies": {},
+  "description": "React Native Image cropper custom component for iOS, Android",
   "keywords": [
     "react-native",
     "android",
