@@ -71,12 +71,18 @@
       <workItem from="1550407685538" duration="4070000" />
       <workItem from="1636615474785" duration="1233000" />
       <workItem from="1636685824274" duration="381000" />
-      <workItem from="1636686976944" duration="7790000" />
+      <workItem from="1636686976944" duration="8737000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="566" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1636702814753">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="566" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1636702814753" />
   </component>
   <component name="masterDetails">
     <states>
