@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="166fc005-0a85-4778-82c9-f79d3afea68c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/RNImageCropperThanhTq.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/RNImageCropperThanhTq.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RNImageCropperThanhTq.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/ImageCropperManager.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/ImageCropperManager/AppDelegate.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/AppDelegate.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/ImageCropperManager/AppDelegate.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/AppDelegate.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/ImageCropperManager/ImageCropperManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/ImageCropperManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/ImageCropperManager/ImageCropperManager.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/ImageCropperManager.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/TOCropViewControllerExample/ar.lproj/Main.strings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/TOCropViewControllerExample/fr.lproj/LaunchScreen.strings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/TOCropViewControllerExample/fr.lproj/Main.strings" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +76,7 @@
       <workItem from="1550407685538" duration="4070000" />
       <workItem from="1636615474785" duration="1233000" />
       <workItem from="1636685824274" duration="381000" />
-      <workItem from="1636686976944" duration="4025000" />
+      <workItem from="1636686976944" duration="5940000" />
     </task>
     <servers />
   </component>
